@@ -19,5 +19,5 @@ class LR:
         return self.model.predict_proba(self.X_val_s)[:, 1]
 
     def train(self):
-        self.model = LogisticRegression(penalty='l2', C=1.0, solver='liblinear', random_state=42)
+        self.model = LogisticRegression(C=1.0, solver='liblinear', random_state=42)
         self.model.fit(self.X_train_s, self.y_train)

@@ -2,6 +2,7 @@ from tensorflow.keras.preprocessing.sequence import pad_sequences
 from sklearn.preprocessing import StandardScaler
 
 from data.calculate_conference_strength import calculate_conference_strength
+from data.data_2026 import get_tournament_seeds, get_pom_rankings
 
 import pandas as pd
 import numpy as np
@@ -30,7 +31,10 @@ def process_deep_network(path: str, n_games: int = 15):
     tourney_results = pd.read_csv(os.path.join(path, 'MNCAATourneyDetailedResults.csv'))
 
     sequences_df = extract_game_sequences(reg_season, n_games)
+    
     conf_scores = calculate_conference_strength(path)
+    seeds_df = get_tournament_seeds(path)
+    pom_df = get_pom_rankings(path)
 
     df_win = tourney_results[['Season', 'WTeamID', 'LTeamID']].copy()
     df_win['Target'] = 1
@@ -42,17 +46,22 @@ def process_deep_network(path: str, n_games: int = 15):
 
     matches = pd.concat([df_win, df_lose]).sample(frac=1.0, random_state=42).reset_index(drop=True)
 
-    matches = matches.merge(sequences_df, left_on=['Season', 'TeamA'], right_on=['Season', 'TeamID'])
-    matches = matches.rename(columns={'Sequence': 'Seq_A'}).drop('TeamID', axis=1)
-    
-    matches = matches.merge(sequences_df, left_on=['Season', 'TeamB'], right_on=['Season', 'TeamID'])
-    matches = matches.rename(columns={'Sequence': 'Seq_B'}).drop('TeamID', axis=1)
+    matches = matches.merge(sequences_df, left_on=['Season', 'TeamA'], right_on=['Season', 'TeamID']).rename(columns={'Sequence': 'Seq_A'}).drop('TeamID', axis=1)
+    matches = matches.merge(sequences_df, left_on=['Season', 'TeamB'], right_on=['Season', 'TeamID']).rename(columns={'Sequence': 'Seq_B'}).drop('TeamID', axis=1)
 
-    matches = matches.merge(conf_scores, left_on=['Season', 'TeamA'], right_on=['Season', 'TeamID'])
-    matches = matches.rename(columns={'ConfStrengthIndex': 'Conf_A'}).drop(['TeamID', 'ConfAbbrev'], axis=1)
+    matches = matches.merge(conf_scores, left_on=['Season', 'TeamA'], right_on=['Season', 'TeamID']).rename(columns={'ConfStrengthIndex': 'Conf_A'}).drop(['TeamID', 'ConfAbbrev'], axis=1)
+    matches = matches.merge(conf_scores, left_on=['Season', 'TeamB'], right_on=['Season', 'TeamID']).rename(columns={'ConfStrengthIndex': 'Conf_B'}).drop(['TeamID', 'ConfAbbrev'], axis=1)
 
-    matches = matches.merge(conf_scores, left_on=['Season', 'TeamB'], right_on=['Season', 'TeamID'])
-    matches = matches.rename(columns={'ConfStrengthIndex': 'Conf_B'}).drop(['TeamID', 'ConfAbbrev'], axis=1)
+    matches = matches.merge(seeds_df, left_on=['Season', 'TeamA'], right_on=['Season', 'TeamID']).rename(columns={'Seed': 'Seed_A'}).drop('TeamID', axis=1)
+    matches = matches.merge(seeds_df, left_on=['Season', 'TeamB'], right_on=['Season', 'TeamID']).rename(columns={'Seed': 'Seed_B'}).drop('TeamID', axis=1)
+
+    matches = matches.merge(pom_df, left_on=['Season', 'TeamA'], right_on=['Season', 'TeamID']).rename(columns={'Rank': 'Rank_A'}).drop('TeamID', axis=1)
+    matches = matches.merge(pom_df, left_on=['Season', 'TeamB'], right_on=['Season', 'TeamID']).rename(columns={'Rank': 'Rank_B'}).drop('TeamID', axis=1)
+
+    matches['Seed_A'] = matches['Seed_A'].fillna(17)
+    matches['Seed_B'] = matches['Seed_B'].fillna(17)
+    matches['Rank_A'] = matches['Rank_A'].fillna(362)
+    matches['Rank_B'] = matches['Rank_B'].fillna(362)
 
     X_tensor = []
     for _, row in matches.iterrows():
@@ -62,12 +71,15 @@ def process_deep_network(path: str, n_games: int = 15):
         diff_seq = seq_A - seq_B
         
         conf_diff = row['Conf_A'] - row['Conf_B']
+        seed_diff = row['Seed_A'] - row['Seed_B']
+        rank_diff = row['Rank_A'] - row['Rank_B']
         
-        conf_diff_array = np.full((n_games, 1), conf_diff)
+        conf_array = np.full((n_games, 1), conf_diff)
+        seed_array = np.full((n_games, 1), seed_diff)
+        rank_array = np.full((n_games, 1), rank_diff)
         
-        combined_seq = np.hstack((diff_seq, conf_diff_array))
-
-        X_tensor.append(combined_seq) #
+        combined_seq = np.hstack((diff_seq, conf_array, seed_array, rank_array))
+        X_tensor.append(combined_seq) 
 
     X_tensor = np.array(X_tensor)
     y = matches['Target'].values

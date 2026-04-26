@@ -1,0 +1,215 @@
+Path to files: /home/hp3bv/.cache/kagglehub/competitions/march-machine-learning-mania-2026
+Training Random Forest...
+Training XGBoost...
+Training Logistic Regression...
+Training Deep Model (1D CNN + Transformer)
+Epoch 1/30
+
+[1m 1/73[0m [37m━━━━━━━━━━━━━━━━━━━━[0m [1m1:49[0m 2s/step - accuracy: 0.5312 - loss: 0.6771
+[1m24/73[0m [32m━━━━━━[0m[37m━━━━━━━━━━━━━━[0m [1m0s[0m 2ms/step - accuracy: 0.6422 - loss: 0.6316 
+[1m48/73[0m [32m━━━━━━━━━━━━━[0m[37m━━━━━━━[0m [1m0s[0m 2ms/step - accuracy: 0.6597 - loss: 0.6234
+[1m72/73[0m [32m━━━━━━━━━━━━━━━━━━━[0m[37m━[0m [1m0s[0m 2ms/step - accuracy: 0.6697 - loss: 0.6159
+[1m73/73[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m2s[0m 5ms/step - accuracy: 0.6946 - loss: 0.5994 - val_accuracy: 0.7121 - val_loss: 0.5705
+Epoch 2/30
+
+[1m 1/73[0m [37m━━━━━━━━━━━━━━━━━━━━[0m [1m1s[0m 15ms/step - accuracy: 0.7500 - loss: 0.5634
+[1m25/73[0m [32m━━━━━━[0m[37m━━━━━━━━━━━━━━[0m [1m0s[0m 2ms/step - accuracy: 0.7200 - loss: 0.5788 
+[1m49/73[0m [32m━━━━━━━━━━━━━[0m[37m━━━━━━━[0m [1m0s[0m 2ms/step - accuracy: 0.7135 - loss: 0.5818
+[1m73/73[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 2ms/step - accuracy: 0.7106 - loss: 0.5829
+[1m73/73[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 3ms/step - accuracy: 0.7032 - loss: 0.5855 - val_accuracy: 0.7293 - val_loss: 0.5610
+Epoch 3/30
+
+[1m 1/73[0m [37m━━━━━━━━━━━━━━━━━━━━[0m [1m1s[0m 14ms/step - accuracy: 0.5938 - loss: 0.6639
+[1m24/73[0m [32m━━━━━━[0m[37m━━━━━━━━━━━━━━[0m [1m0s[0m 2ms/step - accuracy: 0.6681 - loss: 0.5966 
+[1m48/73[0m [32m━━━━━━━━━━━━━[0m[37m━━━━━━━[0m [1m0s[0m 2ms/step - accuracy: 0.6774 - loss: 0.5885
+[1m72/73[0m [32m━━━━━━━━━━━━━━━━━━━[0m[37m━[0m [1m0s[0m 2ms/step - accuracy: 0.6821 - loss: 0.5842
+[1m73/73[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 3ms/step - accuracy: 0.6937 - loss: 0.5714 - val_accuracy: 0.7241 - val_loss: 0.5605
+Epoch 4/30
+
+[1m 1/73[0m [37m━━━━━━━━━━━━━━━━━━━━[0m [1m1s[0m 14ms/step - accuracy: 0.7188 - loss: 0.4725
+[1m25/73[0m [32m━━━━━━[0m[37m━━━━━━━━━━━━━━[0m [1m0s[0m 2ms/step - accuracy: 0.7100 - loss: 0.5401 
+[1m49/73[0m [32m━━━━━━━━━━━━━[0m[37m━━━━━━━[0m [1m0s[0m 2ms/step - accuracy: 0.7133 - loss: 0.5478
+[1m73/73[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 3ms/step - accuracy: 0.7053 - loss: 0.5677 - val_accuracy: 0.7069 - val_loss: 0.5595
+Epoch 5/30
+
+[1m 1/73[0m [37m━━━━━━━━━━━━━━━━━━━━[0m [1m1s[0m 15ms/step - accuracy: 0.6250 - loss: 0.5096
+[1m25/73[0m [32m━━━━━━[0m[37m━━━━━━━━━━━━━━[0m [1m0s[0m 2ms/step - accuracy: 0.7075 - loss: 0.5588 
+[1m49/73[0m [32m━━━━━━━━━━━━━[0m[37m━━━━━━━[0m [1m0s[0m 2ms/step - accuracy: 0.7113 - loss: 0.5590
+[1m73/73[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 2ms/step - accuracy: 0.7099 - loss: 0.5613
+[1m73/73[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 3ms/step - accuracy: 0.7084 - loss: 0.5634 - val_accuracy: 0.7121 - val_loss: 0.5577
+Epoch 6/30
+
+[1m 1/73[0m [37m━━━━━━━━━━━━━━━━━━━━[0m [1m1s[0m 14ms/step - accuracy: 0.7812 - loss: 0.4761
+[1m24/73[0m [32m━━━━━━[0m[37m━━━━━━━━━━━━━━[0m [1m0s[0m 2ms/step - accuracy: 0.7147 - loss: 0.5497 
+[1m48/73[0m [32m━━━━━━━━━━━━━[0m[37m━━━━━━━[0m [1m0s[0m 2ms/step - accuracy: 0.7027 - loss: 0.5629
+[1m72/73[0m [32m━━━━━━━━━━━━━━━━━━━[0m[37m━[0m [1m0s[0m 2ms/step - accuracy: 0.7013 - loss: 0.5652
+[1m73/73[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 3ms/step - accuracy: 0.7041 - loss: 0.5654 - val_accuracy: 0.7172 - val_loss: 0.5560
+Epoch 7/30
+
+[1m 1/73[0m [37m━━━━━━━━━━━━━━━━━━━━[0m [1m1s[0m 14ms/step - accuracy: 0.7500 - loss: 0.5697
+[1m25/73[0m [32m━━━━━━[0m[37m━━━━━━━━━━━━━━[0m [1m0s[0m 2ms/step - accuracy: 0.7125 - loss: 0.5601 
+[1m49/73[0m [32m━━━━━━━━━━━━━[0m[37m━━━━━━━[0m [1m0s[0m 2ms/step - accuracy: 0.7104 - loss: 0.5622
+[1m73/73[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 2ms/step - accuracy: 0.7117 - loss: 0.5608
+[1m73/73[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 3ms/step - accuracy: 0.7088 - loss: 0.5622 - val_accuracy: 0.7224 - val_loss: 0.5589
+Epoch 8/30
+
+[1m 1/73[0m [37m━━━━━━━━━━━━━━━━━━━━[0m [1m1s[0m 14ms/step - accuracy: 0.6562 - loss: 0.5824
+[1m25/73[0m [32m━━━━━━[0m[37m━━━━━━━━━━━━━━[0m [1m0s[0m 2ms/step - accuracy: 0.7141 - loss: 0.5448 
+[1m49/73[0m [32m━━━━━━━━━━━━━[0m[37m━━━━━━━[0m [1m0s[0m 2ms/step - accuracy: 0.7106 - loss: 0.5533
+[1m73/73[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 2ms/step - accuracy: 0.7096 - loss: 0.5568
+[1m73/73[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 3ms/step - accuracy: 0.7062 - loss: 0.5654 - val_accuracy: 0.7172 - val_loss: 0.5601
+Epoch 9/30
+
+[1m 1/73[0m [37m━━━━━━━━━━━━━━━━━━━━[0m [1m1s[0m 14ms/step - accuracy: 0.7500 - loss: 0.5234
+[1m24/73[0m [32m━━━━━━[0m[37m━━━━━━━━━━━━━━[0m [1m0s[0m 2ms/step - accuracy: 0.7407 - loss: 0.5639 
+[1m48/73[0m [32m━━━━━━━━━━━━━[0m[37m━━━━━━━[0m [1m0s[0m 2ms/step - accuracy: 0.7296 - loss: 0.5620
+[1m72/73[0m [32m━━━━━━━━━━━━━━━━━━━[0m[37m━[0m [1m0s[0m 2ms/step - accuracy: 0.7221 - loss: 0.5634
+[1m73/73[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 3ms/step - accuracy: 0.7032 - loss: 0.5651 - val_accuracy: 0.7190 - val_loss: 0.5578
+Epoch 10/30
+
+[1m 1/73[0m [37m━━━━━━━━━━━━━━━━━━━━[0m [1m1s[0m 14ms/step - accuracy: 0.7188 - loss: 0.5241
+[1m25/73[0m [32m━━━━━━[0m[37m━━━━━━━━━━━━━━[0m [1m0s[0m 2ms/step - accuracy: 0.7077 - loss: 0.5514 
+[1m49/73[0m [32m━━━━━━━━━━━━━[0m[37m━━━━━━━[0m [1m0s[0m 2ms/step - accuracy: 0.7080 - loss: 0.5559
+[1m73/73[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 2ms/step - accuracy: 0.7071 - loss: 0.5581
+[1m73/73[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 3ms/step - accuracy: 0.7071 - loss: 0.5603 - val_accuracy: 0.7241 - val_loss: 0.5562
+Epoch 11/30
+
+[1m 1/73[0m [37m━━━━━━━━━━━━━━━━━━━━[0m [1m1s[0m 15ms/step - accuracy: 0.7500 - loss: 0.5060
+[1m25/73[0m [32m━━━━━━[0m[37m━━━━━━━━━━━━━━[0m [1m0s[0m 2ms/step - accuracy: 0.7140 - loss: 0.5534 
+[1m48/73[0m [32m━━━━━━━━━━━━━[0m[37m━━━━━━━[0m [1m0s[0m 2ms/step - accuracy: 0.7116 - loss: 0.5525
+[1m72/73[0m [32m━━━━━━━━━━━━━━━━━━━[0m[37m━[0m [1m0s[0m 2ms/step - accuracy: 0.7110 - loss: 0.5539
+[1m73/73[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 3ms/step - accuracy: 0.7071 - loss: 0.5627 - val_accuracy: 0.7172 - val_loss: 0.5581
+
+--- Model Comparison ---
+Random Forest: LogLoss = 0.5490 | Accuracy = 0.7172
+XGBoost: LogLoss = 0.5544 | Accuracy = 0.6931
+Logistic Regression: LogLoss = 0.5437 | Accuracy = 0.7155
+Deep Model: LogLoss = 0.5560 | Accuracy = 0.7172
+
+========================================
+ INITIALIZING 2026 SIMULATIONS
+========================================
+
+[LOGISTIC REGRESSION]
+
+Running Monte Carlo Simulation (100 runs)...
+--- Championship Probabilities ---
+Arizona: 32.0% (32 simulated wins)
+Duke: 12.0% (12 simulated wins)
+Michigan: 10.0% (10 simulated wins)
+Vanderbilt: 6.0% (6 simulated wins)
+Florida: 4.0% (4 simulated wins)
+Houston: 4.0% (4 simulated wins)
+Michigan St: 4.0% (4 simulated wins)
+Iowa St: 3.0% (3 simulated wins)
+Illinois: 2.0% (2 simulated wins)
+Purdue: 2.0% (2 simulated wins)
+Miami FL: 2.0% (2 simulated wins)
+Gonzaga: 2.0% (2 simulated wins)
+Tennessee: 2.0% (2 simulated wins)
+Alabama: 2.0% (2 simulated wins)
+BYU: 1.0% (1 simulated wins)
+Villanova: 1.0% (1 simulated wins)
+Iowa: 1.0% (1 simulated wins)
+Santa Clara: 1.0% (1 simulated wins)
+Connecticut: 1.0% (1 simulated wins)
+Texas Tech: 1.0% (1 simulated wins)
+Nebraska: 1.0% (1 simulated wins)
+Utah St: 1.0% (1 simulated wins)
+Arkansas: 1.0% (1 simulated wins)
+Ohio St: 1.0% (1 simulated wins)
+St Louis: 1.0% (1 simulated wins)
+Louisville: 1.0% (1 simulated wins)
+Wisconsin: 1.0% (1 simulated wins)
+
+[XGBOOST]
+
+Running Monte Carlo Simulation (100 runs)...
+--- Championship Probabilities ---
+Arizona: 31.0% (31 simulated wins)
+Michigan: 15.0% (15 simulated wins)
+Duke: 13.0% (13 simulated wins)
+Illinois: 4.0% (4 simulated wins)
+Virginia: 4.0% (4 simulated wins)
+Vanderbilt: 4.0% (4 simulated wins)
+Houston: 4.0% (4 simulated wins)
+Connecticut: 3.0% (3 simulated wins)
+Nebraska: 2.0% (2 simulated wins)
+NC State: 2.0% (2 simulated wins)
+St John's: 2.0% (2 simulated wins)
+Miami FL: 2.0% (2 simulated wins)
+Iowa St: 2.0% (2 simulated wins)
+Iowa: 2.0% (2 simulated wins)
+Florida: 2.0% (2 simulated wins)
+Georgia: 1.0% (1 simulated wins)
+Texas: 1.0% (1 simulated wins)
+Tennessee: 1.0% (1 simulated wins)
+Gonzaga: 1.0% (1 simulated wins)
+St Mary's CA: 1.0% (1 simulated wins)
+South Florida: 1.0% (1 simulated wins)
+Arkansas: 1.0% (1 simulated wins)
+Purdue: 1.0% (1 simulated wins)
+
+[RANDOM FOREST]
+
+Running Monte Carlo Simulation (100 runs)...
+--- Championship Probabilities ---
+Arizona: 20.0% (20 simulated wins)
+Michigan: 18.0% (18 simulated wins)
+Duke: 12.0% (12 simulated wins)
+Houston: 7.0% (7 simulated wins)
+Florida: 6.0% (6 simulated wins)
+Iowa St: 4.0% (4 simulated wins)
+Gonzaga: 4.0% (4 simulated wins)
+Illinois: 3.0% (3 simulated wins)
+Iowa: 3.0% (3 simulated wins)
+Tennessee: 3.0% (3 simulated wins)
+BYU: 2.0% (2 simulated wins)
+SMU: 2.0% (2 simulated wins)
+Connecticut: 2.0% (2 simulated wins)
+Vanderbilt: 2.0% (2 simulated wins)
+Michigan St: 2.0% (2 simulated wins)
+Virginia: 1.0% (1 simulated wins)
+Texas: 1.0% (1 simulated wins)
+UCF: 1.0% (1 simulated wins)
+Purdue: 1.0% (1 simulated wins)
+Arkansas: 1.0% (1 simulated wins)
+South Florida: 1.0% (1 simulated wins)
+St Mary's CA: 1.0% (1 simulated wins)
+Northern Iowa: 1.0% (1 simulated wins)
+Alabama: 1.0% (1 simulated wins)
+St John's: 1.0% (1 simulated wins)
+
+[DEEP MODEL]
+
+Running Monte Carlo Simulation (100 runs)...
+--- Championship Probabilities ---
+Arizona: 25.0% (25 simulated wins)
+Duke: 16.0% (16 simulated wins)
+Michigan: 13.0% (13 simulated wins)
+Houston: 7.0% (7 simulated wins)
+Florida: 4.0% (4 simulated wins)
+Iowa St: 3.0% (3 simulated wins)
+Louisville: 3.0% (3 simulated wins)
+Iowa: 3.0% (3 simulated wins)
+Miami FL: 2.0% (2 simulated wins)
+Gonzaga: 2.0% (2 simulated wins)
+Alabama: 2.0% (2 simulated wins)
+Vanderbilt: 2.0% (2 simulated wins)
+Illinois: 2.0% (2 simulated wins)
+Virginia: 1.0% (1 simulated wins)
+Nebraska: 1.0% (1 simulated wins)
+TCU: 1.0% (1 simulated wins)
+Purdue: 1.0% (1 simulated wins)
+Michigan St: 1.0% (1 simulated wins)
+UCLA: 1.0% (1 simulated wins)
+Ohio St: 1.0% (1 simulated wins)
+Georgia: 1.0% (1 simulated wins)
+SMU: 1.0% (1 simulated wins)
+St Mary's CA: 1.0% (1 simulated wins)
+Wisconsin: 1.0% (1 simulated wins)
+South Florida: 1.0% (1 simulated wins)
+Texas A&M: 1.0% (1 simulated wins)
+VCU: 1.0% (1 simulated wins)
+North Carolina: 1.0% (1 simulated wins)
+Connecticut: 1.0% (1 simulated wins)
