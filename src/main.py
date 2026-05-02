@@ -91,4 +91,4 @@ if __name__ == '__main__':
     rf_engine.run_monte_carlo(starting_64_teams, num_simulations=100)
 
     print("\n[DEEP MODEL]")
-    rf_engine.run_monte_carlo(starting_64_teams, num_simulations=100)
+    dm_engine.run_monte_carlo(starting_64_teams, num_simulations=100)

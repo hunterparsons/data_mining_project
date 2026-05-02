@@ -50,7 +50,7 @@ class BracketEngine:
                     name_a = self.get_name(team_a)
                     name_b = self.get_name(team_b)
                     name_winner = self.get_name(winner)
-                    print(f"{name_a} vs {name_b} | Winner: {name_winner} ({winning_prob:.1%})")
+                    print(f"{name_a} vs {name_b} | Winner: {name_winner} ({prob:.1%})")
                 
                 next_round.append(winner)
             
