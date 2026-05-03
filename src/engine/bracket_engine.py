@@ -2,11 +2,12 @@ import numpy as np
 from collections import Counter
 
 class BracketEngine:
-    def __init__(self, model, season_stats_2026, scaler=None, team_mapping=None):
+    def __init__(self, model, season_stats_2026, scaler=None, team_mapping=None, sequences=None):
         self.model = model
         self.stats = season_stats_2026
         self.scaler = scaler
         self.team_mapping = team_mapping or {}
+        self.sequences = sequences
         self.features = [
             'AdjWinPct', 'FGPct', 'AdjPointDiff', 'AvgPoints', 'AvgOppPoints', 
             'AvgFGM', 'AvgFGA', 'AvgTO', 'ConfStrengthIndex', 'Seed', 'Rank'
@@ -15,17 +16,29 @@ class BracketEngine:
     def get_name(self, team_id):
         return self.team_mapping.get(team_id, str(team_id))
 
+    def get_sequence_for_team(self, team_id):
+        team_idx = self.stats[self.stats['TeamID'] == team_id].index[0]
+        return self.sequences_2026[team_idx]
+
     def get_win_probability(self, team_a, team_b):
-        stats_a = self.stats[self.stats['TeamID'] == team_a].iloc[0]
-        stats_b = self.stats[self.stats['TeamID'] == team_b].iloc[0]
-        
-        diff_row = [stats_a[f] - stats_b[f] for f in self.features]
-        X_input = np.array([diff_row])
-        
-        if self.scaler is not None:
-            X_input = self.scaler.transform(X_input)
+        # Deep Model
+        if self.sequences:
+            diff = self.sequences[team_a] - self.sequences[team_b]
+            X = np.expand_dims(diff, axis=0)
+            return self.model.predict(X, verbose=0)[0][0]
+
+        # Trad Models
+        else:
+            stats_a = self.stats[self.stats['TeamID'] == team_a].iloc[0]
+            stats_b = self.stats[self.stats['TeamID'] == team_b].iloc[0]
             
-        return self.model.predict_proba(X_input)[0, 1]
+            diff_row = [stats_a[f] - stats_b[f] for f in self.features]
+            X_input = np.array([diff_row])
+            
+            if self.scaler is not None:
+                X_input = self.scaler.transform(X_input)
+                
+            return self.model.predict_proba(X_input)[0, 1]
 
     def simulate_single_bracket(self, starting_teams, is_stochastic=True, verbose=False):
         """Simulates one full 64-team tournament."""

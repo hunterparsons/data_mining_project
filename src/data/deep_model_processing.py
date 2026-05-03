@@ -91,4 +91,51 @@ def process_deep_network(path: str, n_games: int = 15):
     X_scaled_reshaped = scaler.fit_transform(X_tensor_reshaped)
     X_final_tensor = X_scaled_reshaped.reshape(samples, timesteps, features)
 
-    return X_final_tensor, y
+    return X_final_tensor, y, scaler
+
+def get_2026_sequence_map(path, trained_scaler, n_games=15):
+    reg_season = pd.read_csv(os.path.join(path, 'MRegularSeasonDetailedResults.csv'))
+    
+    sequences_df = extract_game_sequences(reg_season, n_games)
+    
+    conf_scores = calculate_conference_strength(path)
+    seeds_df = get_tournament_seeds(path)
+    pom_df = get_pom_rankings(path)
+    
+    current_season = 2026
+    sequences_df = sequences_df[sequences_df['Season'] == current_season]
+    
+    sequences_df = sequences_df.merge(conf_scores, on=['Season', 'TeamID'], how='left')
+    sequences_df = sequences_df.merge(seeds_df, on=['Season', 'TeamID'], how='left')
+    sequences_df = sequences_df.merge(pom_df, on=['Season', 'TeamID'], how='left')
+    
+    sequences_df['ConfStrengthIndex'] = sequences_df['ConfStrengthIndex'].fillna(0)
+    sequences_df['Seed'] = sequences_df['Seed'].fillna(17)
+    sequences_df['Rank'] = sequences_df['Rank'].fillna(362)
+    
+    sequence_map = {}
+    raw_sequences = []
+    team_ids = []
+    
+    for _, row in sequences_df.iterrows():
+        seq = pad_sequences([row['Sequence']], maxlen=n_games, dtype='float32', padding='pre')[0]
+        conf_array = np.full((n_games, 1), row['ConfStrengthIndex'])
+        seed_array = np.full((n_games, 1), row['Seed'])
+        rank_array = np.full((n_games, 1), row['Rank'])
+        
+        combined_seq = np.hstack((seq, conf_array, seed_array, rank_array))
+        raw_sequences.append(combined_seq)
+        team_ids.append(row['TeamID'])
+    
+    X_raw_tensor = np.array(raw_sequences)
+    samples, timesteps, features = X_raw_tensor.shape
+    
+    X_reshaped = X_raw_tensor.reshape(-1, features)
+    X_scaled = trained_scaler.transform(X_reshaped)
+    
+    X_final = X_scaled.reshape(samples, timesteps, features)
+    
+    for i, team_id in enumerate(team_ids):
+        sequence_map[team_id] = X_final[i]
+        
+    return sequence_map
