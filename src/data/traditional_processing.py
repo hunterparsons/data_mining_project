@@ -1,6 +1,5 @@
 import os
 import pandas as pd
-import numpy as np
 from sklearn.preprocessing import StandardScaler
 from data.calculate_conference_strength import calculate_conference_strength
 from data.traditional_aggregate import aggregate

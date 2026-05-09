@@ -5,13 +5,11 @@ import pandas as pd
 import os
 
 def get_tournament_seeds(data_path):
-    """Extracts the integer seed (1-16) from the Kaggle string format."""
     seeds = pd.read_csv(os.path.join(data_path, 'MNCAATourneySeeds.csv'))
     seeds['Seed'] = seeds['Seed'].str.extract(r'(\d+)').astype(int)
     return seeds[['Season', 'TeamID', 'Seed']]
 
 def get_pom_rankings(data_path):
-    """Pulls the final KenPom ranking for each team right before the tournament."""
     massey = pd.read_csv(os.path.join(data_path, 'MMasseyOrdinals.csv'))
     pom = massey[(massey['SystemName'] == 'POM') & (massey['RankingDayNum'] == 133)].copy()
     pom = pom.rename(columns={'OrdinalRank': 'Rank'})

@@ -15,8 +15,8 @@ Predicts the 2026 NCAA Men's Basketball Tournament using four models trained on 
 - Dependencies in `requirements.txt` (`pip install -r requirements.txt`)
 - A Kaggle account with API credentials configured for `kagglehub`. Easiest setup:
   1. Go to your Kaggle account settings and create a new API token (downloads `kaggle.json`).
-  2. Place it at `~/.kaggle/kaggle.json` and `chmod 600 ~/.kaggle/kaggle.json`.
-  3. Accept the competition rules at https://www.kaggle.com/competitions/march-machine-learning-mania-2026 — `kagglehub` cannot download the data otherwise.
+  2. Place it at `~/.kaggle/kaggle.json` and `chmod 600 ~/.kagglee/kaggle.json`.
+  3. Accept the competition rules at https://www.kaggle.com/comptitions/march-machine-learning-mania-2026 — `kagglehub` cannot download the data otherwise.
 
 ## Running
 
@@ -45,7 +45,3 @@ src/
   engine/
     bracket_engine.py              # bracket simulation + Monte Carlo
 ```
-
-## Output
-
-`results.txt` is a saved log from a previous full run, kept in the repo for reference. Re-running `main.py` regenerates the same kind of output to stdout.
