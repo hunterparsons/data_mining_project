@@ -24,11 +24,14 @@ class BracketEngine:
         
         if self.scaler is not None:
             X_input = self.scaler.transform(X_input)
-            
-        return self.model.predict_proba(X_input)[0, 1]
 
-    def simulate_single_bracket(self, starting_teams, is_stochastic=True, verbose=False):
-        """Simulates one full 64-team tournament."""
+        if hasattr(self.model, 'predict_proba'):
+            return self.model.predict_proba(X_input)[0, 1]
+        
+        return self.model.predict(X_input, verbose=0)[0][0]
+            
+
+    def simulate_single_bracket(self, starting_teams, verbose=False):
         current_round = starting_teams.copy()
         
         while len(current_round) > 1:
@@ -39,12 +42,7 @@ class BracketEngine:
                 
                 prob = self.get_win_probability(team_a, team_b)
                 
-                if is_stochastic:
-                    # Roll a random number between 0 and 1
-                    winner = team_a if np.random.rand() < prob else team_b
-                else:
-                    # Chalk: Highest probability always wins
-                    winner = team_a if prob > 0.5 else team_b
+                winner = team_a if np.random.rand() < prob else team_b
 
                 if verbose:
                     name_a = self.get_name(team_a)
@@ -62,15 +60,13 @@ class BracketEngine:
         return current_round[0]
 
     def run_monte_carlo(self, starting_teams, num_simulations=100):
-        """Runs the stochastic bracket N times and tallies the most frequent champions."""
         print(f"\nRunning Monte Carlo Simulation ({num_simulations} runs)...")
         champions = []
         
         for _ in range(num_simulations):
-            champ = self.simulate_single_bracket(starting_teams, is_stochastic=True, verbose=False)
+            champ = self.simulate_single_bracket(starting_teams, verbose=False)
             champions.append(champ)
             
-        # Count and sort the winners
         champ_counts = Counter(champions)
         sorted_champs = champ_counts.most_common()
         
